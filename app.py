@@ -9,7 +9,7 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# सुरुमा टेबल बनाउने (यो एप सुरु हुँदा एक पटक चल्छ)
+# सुरुमा टेबल बनाउने
 def init_db():
     conn = get_db_connection()
     conn.execute('CREATE TABLE IF NOT EXISTS entries (id INTEGER PRIMARY KEY, date TEXT, rank TEXT, name TEXT, remarks TEXT)')
@@ -21,7 +21,6 @@ init_db()
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # form.html का नाम (name="...") सँग यी मिल्नुपर्छ
         date = request.form.get('date') 
         rank = request.form.get('rank')
         name = request.form.get('name')
@@ -38,6 +37,7 @@ def index():
 @app.route('/dashboard')
 def dashboard():
     conn = get_db_connection()
+    # यो नै सहि तरिका हो
     entries = conn.execute('SELECT * FROM entries').fetchall()
     conn.close()
     return render_template('dashboard.html', entries=entries)
