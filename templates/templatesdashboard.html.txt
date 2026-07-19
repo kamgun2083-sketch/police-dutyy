@@ -6,14 +6,18 @@
         <th>नाम</th>
         <th>कैफियत</th>
     </tr>
-    {% for entry in entries %}
-    <tr>
-        <td>{{ entry.date }}</td>
-        <td>{{ entry.rank }}</td>
-        <td>{{ entry.name }}</td>
-        <td>{{ entry.remarks }}</td>
-    </tr>
-    {% endfor %}
+    {% if entries %}
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry['date'] }}</td>
+            <td>{{ entry['rank'] }}</td>
+            <td>{{ entry['name'] }}</td>
+            <td>{{ entry['remarks'] }}</td>
+        </tr>
+        {% endfor %}
+    {% else %}
+        <tr><td colspan="4">कुनै डेटा फेला परेन।</td></tr>
+    {% endif %}
 </table>
 <br>
 <a href="/">नयाँ फारम भर्नुहोस्</a>
