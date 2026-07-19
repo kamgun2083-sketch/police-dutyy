@@ -1,0 +1,19 @@
+<h1>सबमिट भएका विवरणहरू</h1>
+<table border="1">
+    <tr>
+        <th>मिति</th>
+        <th>दर्जा</th>
+        <th>नाम</th>
+        <th>कैफियत</th>
+    </tr>
+    {% for entry in entries %}
+    <tr>
+        <td>{{ entry.date }}</td>
+        <td>{{ entry.rank }}</td>
+        <td>{{ entry.name }}</td>
+        <td>{{ entry.remarks }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<a href="/">नयाँ फारम भर्नुहोस्</a>
