@@ -27,10 +27,10 @@ conn.close()
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        date = request.form.get('...')['date']
-        rank = request.form.get('...')['rank']
-        name = request.form.get('...')['name']
-        remarks = request.form.get('...')['remarks']
+        date = request.form.get('date') 
+        rank = request.form.get('rank')
+        name = request.form.get('name')
+        remarks = request.form.get('remarks')
         
         conn = get_db_connection()
         conn.execute('INSERT INTO entries (date, rank, name, remarks) VALUES (?, ?, ?, ?)', (date, rank, name, remarks))
